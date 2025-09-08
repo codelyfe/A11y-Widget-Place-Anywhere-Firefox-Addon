@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "A11y Widget — ShipWr3ck | Codelyfe (Firefox)",
+  "version": "1.0.3",
+  "description": "Privacy-friendly accessibility widget: dark mode, contrast, text size/spacing, reading mask, TTS reader, and more.",
+
+  "icons": {
+    "16": "icons/16.png",
+    "128": "icons/128.png"
+  },
+
+  "action": {
+    "default_title": "A11y Widget",
+    "default_icon": {
+      "19": "icons/gray-19.png",
+      "38": "icons/gray-38.png"
+    }
+  },
+
+  "permissions": ["storage"],
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "exclude_matches": ["https://addons.mozilla.org/*"],
+      "run_at": "document_idle",
+      "all_frames": false,
+      "js": ["content.js"]
+    }
+  ],
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "a11y-widget@shipwr3ck",
+      "strict_min_version": "109.0"
+    }
+  },
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}
